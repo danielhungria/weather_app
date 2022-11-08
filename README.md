@@ -10,7 +10,7 @@
 
 - Ícones que mudam de acordo com o tempo atual
 
-- Refresh Layout para melhorar a experiência do usuário, não é preciso fechar e abrir o 
+- SwipeRefresh para melhorar a experiência do usuário, não é preciso fechar e abrir o 
 app para poder recarregar página, basta arrastar para baixo.
 
 - Coroutines para que o app possa trabalhar de maneira assíncrona.
