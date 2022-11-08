@@ -1,6 +1,6 @@
 <h1>Weather App</h1>
 <h3>ScreenShot</h3>
-<img src="https://i.imgur.com/2zRWx5x.png" height="300"> <img src="https://i.imgur.com/tj3NqMi.png" height="300"> <img src="https://i.imgur.com/iWdKP1T.png" height="300">
+<img src="https://i.imgur.com/2zRWx5x.png" height="300"><img src="https://i.imgur.com/tj3NqMi.png" height="300"><img src="https://i.imgur.com/iWdKP1T.png" height="300">
 <h4>Layout inspirado em um tutorial do @evanemran, porém fiz algumas implementações como:
 
 - Retrofit para fazer requisições http e declaração de api
