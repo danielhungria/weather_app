@@ -14,4 +14,6 @@
 app para poder recarregar página, basta arrastar para baixo.
 
 - Coroutines para que o app possa trabalhar de maneira assíncrona.
+
+- Implementação da Arquitetura MVVM a fim de facilitar a legibilidade, manutenção e escalabilidade do código.
 </p>
