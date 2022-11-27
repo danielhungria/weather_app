@@ -7,9 +7,7 @@
     android:orientation="vertical"
     android:padding="25dp"
     android:background="@drawable/gradient_bg"
-    tools:context=".activity.MainActivity"
-
-    >
+    tools:context=".activity.MainActivity">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/activity_main_swipeRefresh"
