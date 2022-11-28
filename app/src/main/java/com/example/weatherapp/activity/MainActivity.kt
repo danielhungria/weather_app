@@ -1,6 +1,7 @@
 package com.example.weatherapp.activity
 
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -60,22 +61,22 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun setInfo(weatherModel: WeatherModel) {
-        val sunrise = weatherModel.sys?.sunrise?.toLong()!!
-        val sunriseFormat = SimpleDateFormat("hh:mm a").format(Date(sunrise * 1000))
-        val sunset = weatherModel.sys?.sunset?.toLong()!!
-        val sunsetFormat = SimpleDateFormat("hh:mm a").format(Date(sunset * 1000))
-        val status = weatherModel.weather?.get(0)?.description
-        val windSpeed = weatherModel.wind?.speed!!
+    private fun setInfo(weatherModel: WeatherModel) = with(weatherModel) {
+        val sunrise = sys?.sunrise?.toLong()!!
+        val sunset = sys.sunset.toLong()
+        val status = weather?.get(0)?.description
+        val windSpeed = wind?.speed!!
         val windSpeedKm = windSpeed * (3.6)
-        val humidity = weatherModel.main?.humidity
-        val tempPadrao = weatherModel.main?.temp
-        val tempMax = weatherModel.main?.temp_max
-        val tempMin = weatherModel.main?.temp_min
-        val locale = weatherModel.name
-        val pressure = weatherModel.main?.pressure
-        val updated = weatherModel.dt?.toLong()!!
+        val humidity = main?.humidity
+        val tempPadrao = main?.temp
+        val tempMax = main?.temp_max
+        val tempMin = main?.temp_min
+        val locale = name
+        val pressure = main?.pressure
+        val updated = dt?.toLong()!!
         val updatedFormat = SimpleDateFormat("yyyy.MM.dd hh:mm a").format(Date(updated * 1000))
+        val sunsetFormat = SimpleDateFormat("hh:mm a").format(Date(sunset * 1000))
+        val sunriseFormat = SimpleDateFormat("hh:mm a").format(Date(sunrise * 1000))
 
         //ROUNDED
         val tempPadrao2 = String.format("%.0f", tempPadrao)
@@ -98,23 +99,23 @@ class MainActivity : AppCompatActivity() {
 
         //SET IMAGE
         val image = binding.statusImageView
-
-        if (status == "clear sky") {
-            image.setImageResource(R.drawable.sun)
-        }
-        if (status == "few clouds") {
-            image.setImageResource(R.drawable.few_clouds)
-        }
-        if (status == "overcast clouds" || status == "scattered clouds" || status == "broken clouds") {
-            image.setImageResource(R.drawable.overcast_clouds)
-        }
-        if (status == "extreme rain") {
-            image.setImageResource(R.drawable.rain2)
-        }
-        if (status == "light rain") {
-            image.setImageResource(R.drawable.rain)
-        }
+        setImage(status,image)
     }
 
+    private fun setImage(status: String?, image: ImageView) {
+
+        when(status){
+            "clear sky" -> image.setImageResource(R.drawable.sun)
+
+            "few clouds" -> image.setImageResource(R.drawable.few_clouds)
+
+            "overcast clouds", "scattered clouds", "broken clouds" -> image.setImageResource(R.drawable.overcast_clouds)
+
+            "light rain", "moderate rain" -> image.setImageResource(R.drawable.rain)
+
+            "extreme rain" -> image.setImageResource(R.drawable.rain2)
+        }
+
+    }
 
 }
